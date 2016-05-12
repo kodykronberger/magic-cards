@@ -1,4 +1,72 @@
-<h1>Find Your Card</h1>
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic, The Gathering | Card Database</title>
+
+    <!-- Bootstrap Files -->
+
+    <link rel="stylesheet" href="../css/external/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/external/bootstrap-theme.css">
+    <link rel="stylesheet" href="../css/external/jquery-ui.min.css">
+
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="../img/logo1.png" /> <span>Card Database</span>
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li data-tab="_home"><a style="cursor: pointer;" onclick="loadPageAjax('_home', 'Home')">Home</a>
+                    </li>
+                    <li data-tab="_cards"><a style="cursor: pointer;" onclick="loadPageAjax('_cards', 'Card Search')">Cards</a>
+                    </li>
+                    <li data-tab="_users"><a style="cursor: pointer;" onclick="loadPageAjax('_users', 'Users')">Users</a>
+                    </li>
+                    <li data-tab="_mydeck"><a style="cursor: pointer;" onclick="loadPageAjax('_mydeck', 'My Deck')">My Deck</a>
+                    </li>
+                </ul>
+                <ul id="nav-loggedOut" class="nav navbar-nav navbar-right">
+                    <li><a style="cursor: pointer;" onclick="login(); location.reload();">Log in</a></li>
+                    <li><a style="cursor: pointer;" onclick="register()">Register</a></li>
+                </ul>
+                <ul id="nav-loggedIn" class="nav navbar-nav navbar-right">
+                    <li class="userdetails"><a style="padding: 0;"><img id="profilephoto" src="img/no-photo.jpg"/></a></li>
+                    <li class="userdetails" class="user-nav"><a style="cursor: pointer;"><span id='username'></span></a></li>
+                    <li><a style="cursor: pointer;" onclick="logout(); location.reload();">Log out</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <!-- All body content goes in here -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="jumbo-title">Cards</h1>
+        </div>
+    </div>
+    <div id="wrapper">
+        <div id="content">
+           <h1>Find Your Card</h1>
 </div>
 <div class="form-group">
     <label for="usr">Name:</label>
@@ -161,7 +229,7 @@
     </ul>
 </div>
 <br>
-<img alt="Magic Card Demo" src="img/randomCard.jpg" />
+<img alt="Magic Card Demo" src="../img/randomCard.jpg" />
 <div class="row" id="cardDetails">
     <div class="col-md-12">
         <p>
@@ -171,4 +239,20 @@
 </div>
 <button type="button" id="cardButton" class="btn btn-default">
     Find my card
-</button>
+</button> 
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p class="text-muted">&copy;2016 | Created by Tanner Champine & Dakota Kronberger | "Cyborg" Bootstrap theme provided by Bootswatch.com</p>
+        </div>
+    </footer>
+</body>
+<!-- Jquery/Bootstrap Scripts -->
+<script src="../js/external/jquery-2.2.3.min.js"></script>
+<script src="../js/external/jquery-ui.min.js"></script>
+<script src="../js/external/bootstrap.min.js"></script>
+<script src="../js/main.js"></script>
+
+</html>
