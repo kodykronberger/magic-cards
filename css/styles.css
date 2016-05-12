@@ -1,7 +1,7 @@
 body {
     font-family: 'Open Sans', cursive;
-    background: url(../img/back2.jpg);
-    background-size: cover;
+    background: url(../img/back.png);
+/*    background-size: cover;*/
 }
 
 html, 
@@ -31,14 +31,31 @@ a.navbar-brand span {
     color: #E8A357;
 }
 
-#content {
+#wrapper {
     width: 1350px;
     margin: 0 auto;
-    background-color: #222222;
+    padding: 50px 100px;
+    background-color: #222;
     height: 100%;
     
     /* Box shadows */
     -webkit-box-shadow: 10px 10px 47px -15px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 47px -15px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 47px -15px rgba(0, 0, 0, 0.75);
+}
+
+.jumbotron {
+    margin-top: 59px;
+    margin-bottom: 0 !important;
+    height: 200px;
+    background: url(../img/jumbotronback.jpg);
+    background-size: cover;
+}
+
+.jumbo-title {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 100px !important;
+    margin-top: -2px !important;
+    color: #39C2D8 !important;
+        margin-left: 180px;
 }

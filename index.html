@@ -30,17 +30,22 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">Cards</a></li>
-            <li><a href="#contact">My Deck</a></li>
+            <li><a style="cursor: pointer;"  onclick="loadPageAjax('_home', 'Home')">Home</a></li>
+            <li><a style="cursor: pointer;" onclick="loadPageAjax('_cards', 'Card Search')">Cards</a></li>
+            <li><a style="cursor: pointer;" onclick="loadPageAjax('_mydeck', 'My Deck')">My Deck</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
     
     <!-- All body content goes in here -->
-    <div id="content">
-        
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="jumbo-title">Home</h1>
+      </div>
+    </div>
+    <div id="wrapper">
+        <div id="content"></div>
     </div>
 </body>
     <!-- Jquery/Bootstrap Scripts -->
