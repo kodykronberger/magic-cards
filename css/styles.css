@@ -59,3 +59,13 @@ a.navbar-brand span {
     color: #39C2D8 !important;
         margin-left: 180px;
 }
+
+.footer {
+    background-color: #0E0E0E;
+    height: 50px;
+}
+
+.footer-content {
+    padding: 10px;
+    text-align: center;
+}
