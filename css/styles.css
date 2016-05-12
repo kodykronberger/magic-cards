@@ -1,0 +1,44 @@
+body {
+    font-family: 'Open Sans', cursive;
+    background: url(../img/back2.jpg);
+    background-size: cover;
+}
+
+html, 
+body {
+    height: 100%;
+}
+
+a.navbar-brand img {
+    width: 110px;
+    display: inline-block;
+}
+
+a.navbar-brand {
+    width: 330px;
+    margin-bottom: 8px;
+}
+
+ul.nav {
+    margin-top: 5px;
+    font-size: 1.3em;
+}
+
+a.navbar-brand span {
+    margin-left: 8px;
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 1.3em;
+    color: #E8A357;
+}
+
+#wrapper {
+    width: 1350px;
+    margin: 0 auto;
+    background-color: #222222;
+    height: 100%;
+    
+    /* Box shadows */
+    -webkit-box-shadow: 10px 10px 47px -15px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 47px -15px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 47px -15px rgba(0, 0, 0, 0.75);
+}
