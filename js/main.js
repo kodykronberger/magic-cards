@@ -1,7 +1,16 @@
 var currentuser = localStorage.getItem("username");
+var currentPage = localStorage.getItem("currentPage") || "_home";
+var pageTitles = {
+    "_home": "Home",
+    "_cards": "Card Search",
+    "_users": "Users",
+    "_mydeck": "My Deck"
+}
 
 // On doc ready
 $(document).ready(function () {
+    // Redirect to home page;
+    loadPageAjax(currentPage, pageTitles[currentPage]);
     // Handle whether used is logged in
     if (currentuser == null) {
         changeLoginNav(false);
@@ -33,6 +42,7 @@ function loadPageAjax(nameOfPage, jumboTitle) {
             changeContent(data);
             setActiveNavLink(nameOfPage);
             changeJumboTitle(jumboTitle);
+            localStorage.setItem("currentPage", nameOfPage);
         }
     });
 }
