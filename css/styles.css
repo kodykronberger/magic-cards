@@ -69,3 +69,7 @@ a.navbar-brand span {
     padding: 10px;
     text-align: center;
 }
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+    color: #00DCFF;
+}

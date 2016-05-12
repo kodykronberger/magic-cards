@@ -4,7 +4,6 @@ $(document).ready(function () {
     loadPageAjax("_home");
 }); // End of on doc ready
 
-
 // Loads a file from content/ using AJAX
 function loadPageAjax(nameOfPage, jumboTitle) {
     var _url = "./content/" + nameOfPage + ".html";
@@ -12,6 +11,7 @@ function loadPageAjax(nameOfPage, jumboTitle) {
         url: _url,
         success: function (data) {
             changeContent(data);
+            setActiveNavLink(nameOfPage);
             changeJumboTitle(jumboTitle);
         }
     });
@@ -22,6 +22,12 @@ function changeContent(data) {
     $("#content").hide();
     $("#content").html(data);
     $("#content").fadeIn();
+}
+
+function setActiveNavLink(name) {
+    $("ul.nav li").removeClass("active");
+    $("ul.nav li[data-tab='" + name + "']").addClass("active");
+    
 }
 
 function changeJumboTitle(name) {
