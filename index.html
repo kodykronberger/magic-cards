@@ -9,7 +9,7 @@
     <!-- Bootstrap Files -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
-    
+
     <link rel="stylesheet" href="css/styles.css">
 
     <!-- Google Fonts -->
@@ -28,18 +28,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img src="img/logo1.png" /> <span>Card Database</span></a>
+                <a class="navbar-brand" href="#"><img src="img/logo1.png" /> <span>Card Database</span>
+                </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li data-tab="_home"><a style="cursor: pointer;" onclick="loadPageAjax('_home', 'Home')">Home</a></li>
-                    <li data-tab="_cards"><a style="cursor: pointer;" onclick="loadPageAjax('_cards', 'Card Search')">Cards</a></li>
-                    <li data-tab="_users"><a style="cursor: pointer;" onclick="loadPageAjax('_users', 'Users')">Users</a></li>
-                    <li data-tab="_mydeck"><a style="cursor: pointer;" onclick="loadPageAjax('_mydeck', 'My Deck')">My Deck</a></li>
+                    <li data-tab="_home"><a style="cursor: pointer;" onclick="loadPageAjax('_home', 'Home')">Home</a>
+                    </li>
+                    <li data-tab="_cards"><a style="cursor: pointer;" onclick="loadPageAjax('_cards', 'Card Search')">Cards</a>
+                    </li>
+                    <li data-tab="_users"><a style="cursor: pointer;" onclick="loadPageAjax('_users', 'Users')">Users</a>
+                    </li>
+                    <li data-tab="_mydeck"><a style="cursor: pointer;" onclick="loadPageAjax('_mydeck', 'My Deck')">My Deck</a>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a style="cursor: pointer;">Log in</a></li>
-                    <li><a style="cursor: pointer;">Register</a></li>
+                    <li><a style="cursor: pointer;">Log in</a>
+                    </li>
+                    <li><a style="cursor: pointer;">Register</a>
+                    </li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -53,7 +60,190 @@
         </div>
     </div>
     <div id="wrapper">
-        <div id="content"></div>
+        <div id="content">
+            <h1>
+					Find Your Card
+				</h1>
+        </div>
+        <div class="form-group">
+            <label for="usr">Name:</label>
+            <input type="text" class="form-control" id="usr">
+        </div>
+        <div class="btn-group">
+
+            <button class="btn btn-default">
+                Mana Color
+            </button>
+            <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#">Red</a>
+                </li>
+                <li>
+                    <a href="#">Green</a>
+                </li>
+                <li>
+                    <a href="#">White</a>
+                </li>
+                <li>
+                    <a href="#">Blue</a>
+                </li>
+                <li>
+                    <a href="#">Black</a>
+                </li>
+            </ul>
+        </div>
+                <div class="btn-group">
+
+            <button class="btn btn-default">
+               Mana Cost
+            </button>
+            <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">4</a>
+                </li>
+                <li>
+                    <a href="#">5</a>
+                </li>
+                  <li>
+                    <a href="#">6</a>
+                </li>
+                <li>
+                    <a href="#">7</a>
+                </li>
+                <li>
+                    <a href="#">8</a>
+                </li>
+                     <li>
+                    <a href="#">9</a>
+                </li>
+                <li>
+                    <a href="#">10</a>
+                </li>
+                <li>
+                    <a href="#">11</a>
+                </li>
+        </div>
+        <div class="btn-group">
+
+            <button class="btn btn-default">
+                Power
+            </button>
+            <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">4</a>
+                </li>
+                <li>
+                    <a href="#">5</a>
+                </li>
+                  <li>
+                    <a href="#">6</a>
+                </li>
+                <li>
+                    <a href="#">7</a>
+                </li>
+                <li>
+                    <a href="#">8</a>
+                </li>
+                     <li>
+                    <a href="#">9</a>
+                </li>
+                <li>
+                    <a href="#">10</a>
+                </li>
+                <li>
+                    <a href="#">11</a>
+                </li>
+        </div>
+        <div class="btn-group">
+
+            <button class="btn btn-default">
+                Toughness
+            </button>
+            <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">4</a>
+                </li>
+                <li>
+                    <a href="#">5</a>
+                </li>
+                  <li>
+                    <a href="#">6</a>
+                </li>
+                <li>
+                    <a href="#">7</a>
+                </li>
+                <li>
+                    <a href="#">8</a>
+                </li>
+                     <li>
+                    <a href="#">9</a>
+                </li>
+                <li>
+                    <a href="#">10</a>
+                </li>
+                <li>
+                    <a href="#">11</a>
+                </li>
+            </ul>
+            </div>
+        <br>
+        <img alt="Magic Card Demo" src="img/randomCard.jpg" />
+        <div class="row" id="cardDetails">
+		<div class="col-md-12">
+			<h2>
+				Heading
+			</h2>
+			<p>
+				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+			</p>
+			<p>
+				<a class="btn" href="#">View details »</a>
+			</p>
+		</div>
+	</div>
+        <button type="button" id="cardButton" class="btn btn-default">
+            Find my card
+        </button>
+    </div>
     </div>
 
     <footer class="footer">
