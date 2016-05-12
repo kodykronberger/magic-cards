@@ -7,10 +7,11 @@
     <title>Magic, The Gathering | Card Database</title>
 
     <!-- Bootstrap Files -->
+
     <link rel="stylesheet" href="css/external/bootstrap.min.css">
     <link rel="stylesheet" href="css/external/bootstrap-theme.css">
     <link rel="stylesheet" href="css/external/jquery-ui.min.css">
-    
+
     <link rel="stylesheet" href="css/styles.css">
 
     <!-- Google Fonts -->
@@ -29,14 +30,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img src="img/logo1.png" /> <span>Card Database</span></a>
+                <a class="navbar-brand" href="#"><img src="img/logo1.png" /> <span>Card Database</span>
+                </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li data-tab="_home"><a style="cursor: pointer;" onclick="loadPageAjax('_home', 'Home')">Home</a></li>
-                    <li data-tab="_cards"><a style="cursor: pointer;" onclick="loadPageAjax('_cards', 'Card Search')">Cards</a></li>
-                    <li data-tab="_users"><a style="cursor: pointer;" onclick="loadPageAjax('_users', 'Users')">Users</a></li>
-                    <li data-tab="_mydeck"><a style="cursor: pointer;" onclick="loadPageAjax('_mydeck', 'My Deck')">My Deck</a></li>
+                    <li data-tab="_home"><a style="cursor: pointer;" onclick="loadPageAjax('_home', 'Home')">Home</a>
+                    </li>
+                    <li data-tab="_cards"><a style="cursor: pointer;" onclick="loadPageAjax('_cards', 'Card Search')">Cards</a>
+                    </li>
+                    <li data-tab="_users"><a style="cursor: pointer;" onclick="loadPageAjax('_users', 'Users')">Users</a>
+                    </li>
+                    <li data-tab="_mydeck"><a style="cursor: pointer;" onclick="loadPageAjax('_mydeck', 'My Deck')">My Deck</a>
+                    </li>
                 </ul>
                 <ul id="nav-loggedOut" class="nav navbar-nav navbar-right">
                     <li><a style="cursor: pointer;" onclick="login(); location.reload();">Log in</a></li>
@@ -59,7 +65,9 @@
         </div>
     </div>
     <div id="wrapper">
-        <div id="content"></div>
+        <div id="content">
+            
+        </div>
     </div>
 
     <footer class="footer">

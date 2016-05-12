@@ -59,6 +59,17 @@ a.navbar-brand span {
     margin-left: 380px;
 }
 
+#cardButton{
+    clear: left;
+}
+
+#cardDetails{
+margin-left: 320px;
+    position: absolute;
+    top: 550px;
+    width: 200px;
+}
+
 .footer {
     background-color: #0E0E0E;
     height: 50px;
