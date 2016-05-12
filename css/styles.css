@@ -1,10 +1,10 @@
 body {
     font-family: 'Open Sans', cursive;
     background: url(../img/back.png);
-/*    background-size: cover;*/
+    /*    background-size: cover;*/
 }
 
-html, 
+html,
 body {
     height: 100%;
 }
@@ -37,7 +37,6 @@ a.navbar-brand span {
     padding: 50px 100px;
     background-color: #222;
     height: 100%;
-    
     /* Box shadows */
     -webkit-box-shadow: 10px 10px 47px -15px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 47px -15px rgba(0, 0, 0, 0.75);
@@ -57,7 +56,7 @@ a.navbar-brand span {
     font-size: 100px !important;
     margin-top: -2px !important;
     color: #39C2D8 !important;
-        margin-left: 180px;
+    margin-left: 180px;
 }
 
 .footer {
@@ -70,6 +69,19 @@ a.navbar-brand span {
     text-align: center;
 }
 
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:hover,
+.navbar-inverse .navbar-nav>.active>a:focus {
     color: #00DCFF;
+}
+
+#profilephoto {
+    max-width: 45px;
+    border-radius: 50px;
+}
+
+#username {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 1.3em;
+    color: #39C2D8;
 }
