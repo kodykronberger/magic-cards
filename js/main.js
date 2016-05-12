@@ -33,6 +33,10 @@ $(document).ready(function () {
 
 }); // End of on doc ready
 
+// **************************
+// * UI functions
+// **************************
+
 // Loads a file from content/ using AJAX
 function loadPageAjax(nameOfPage, jumboTitle) {
     var _url = "./content/" + nameOfPage + ".html";
@@ -58,7 +62,6 @@ function changeContent(data) {
 function setActiveNavLink(name) {
     $("ul.nav li").removeClass("active");
     $("ul.nav li[data-tab='" + name + "']").addClass("active");
-
 }
 
 // Changes the h1 text within the Jumbotron
@@ -77,6 +80,10 @@ function changeLoginNav(loggedIn) {
         $("#nav-loggedOut").show();
     }
 }
+
+// **************************
+// * Login functions
+// **************************
 
 function login() {
     localStorage.setItem("username", "test user")
