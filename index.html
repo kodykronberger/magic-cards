@@ -9,7 +9,7 @@
     <!-- Bootstrap Files -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
-
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
     <link rel="stylesheet" href="css/styles.css">
 
     <!-- Google Fonts -->
@@ -47,6 +47,14 @@
                     </li>
                     <li><a style="cursor: pointer;">Register</a>
                     </li>
+                <ul id="nav-loggedOut" class="nav navbar-nav navbar-right">
+                    <li><a style="cursor: pointer;" onclick="login(); location.reload();">Log in</a></li>
+                    <li><a style="cursor: pointer;" onclick="register()">Register</a></li>
+                </ul>
+                <ul id="nav-loggedIn" class="nav navbar-nav navbar-right">
+                    <li class="userdetails"><a style="padding: 0;"><img id="profilephoto" src="img/no-photo.jpg"/></a></li>
+                    <li class="userdetails" class="user-nav"><a style="cursor: pointer;"><span id='username'></span></a></li>
+                    <li><a style="cursor: pointer;" onclick="logout(); location.reload();">Log out</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -254,6 +262,7 @@
 </body>
 <!-- Jquery/Bootstrap Scripts -->
 <script src="js/jquery-2.2.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 
