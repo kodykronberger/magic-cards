@@ -4,7 +4,8 @@ var pageTitles = {
     "_home": "Home",
     "_cards": "Card Search",
     "_users": "Users",
-    "_mydeck": "My Deck"
+    "_mydeck": "My Deck",
+    "_profile": "Profile"
 }
 
 // On doc ready
