@@ -85,9 +85,9 @@ function renderDataToPane(data) {
         $("#cardTitle").html(card.name);
         $("#cardText").html(card.text);
         $("#cardType").html(card.type);
-        $("#cardRarity").html(card.rarity);
-        $("#cardPower").html(card.power);
-        $("#cardToughness").html(card.toughness);
+        $("#cardRarity").html("Rarity: " + card.rarity);
+        $("#cardPower").html("Power: " + card.power);
+        $("#cardToughness").html("Thoughness: " + card.toughness);
         $("#cardColors").html(card.colors);
         $("#cardModal").modal("show");
     });
