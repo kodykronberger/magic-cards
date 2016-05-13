@@ -1,0 +1,12 @@
+.card-image {
+    max-width: 100px;
+}
+
+#resultsPane {
+    max-height: 600px;
+    overflow: auto;
+}
+
+.modal-body {
+    min-height: 200px;
+}
