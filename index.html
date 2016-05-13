@@ -49,8 +49,8 @@
                     <li><a style="cursor: pointer;" onclick="register()">Register</a></li>
                 </ul>
                 <ul id="nav-loggedIn" class="nav navbar-nav navbar-right">
-                    <li class="userdetails"><a style="padding: 0;"><img id="profilephoto" src="img/no-photo.jpg"/></a></li>
-                    <li class="userdetails" class="user-nav"><a style="cursor: pointer; padding-top: 14px;"><span id='username'></span></a></li>
+                    <li class="userdetails"><a style="padding: 0;"><img id="profilephoto" data-tab="_profile" onclick="loadPageAjax('_profile', 'Profile')" style="cursor: pointer;" src="img/no-photo.jpg"/></a></li>
+                    <li class="userdetails" data-tab="_profile" onclick="loadPageAjax('_profile', 'Profile')" style="cursor: pointer;" class="user-nav"><a style="cursor: pointer; padding-top: 14px;"><span id='username'></span></a></li>
                     <li><a style="cursor: pointer;" onclick="logout(); location.reload();">Log out</a></li>
                 </ul>
             </div>
