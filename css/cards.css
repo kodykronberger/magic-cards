@@ -2,6 +2,10 @@
     max-width: 100px;
 }
 
+.card-imageModal {
+    max-width: 170px;
+}
+
 #resultsPane {
     max-height: 500px;
     overflow: auto;
@@ -9,4 +13,20 @@
 
 .modal-body {
     min-height: 200px;
+}
+
+#cardDetails {
+    margin-left: 0;
+}
+
+.card-section {
+    margin-top: 10px;
+}
+
+#cardTitle {
+        padding-left: 20px;
+}
+
+.tag {
+    padding: 10px 20px;
 }

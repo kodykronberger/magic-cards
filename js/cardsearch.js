@@ -1,6 +1,10 @@
 var dataArray = [];
 var searchParameters = {
-    "name": null
+    "name": null,
+    "manaColor": null,
+    "manaCost": null,
+    "power": null,
+    "toughness": null
 }
 
 $("document").ready(function () {
@@ -23,6 +27,27 @@ $("document").ready(function () {
     $("#search").click(function () {
         var searchName = $("#searchName").val();
         filterCards(searchName);
+    });
+    
+    // Set up dropdowns
+    $('#manaCostDropdown li a').on('click', function(){
+        searchParameters.manaCost = Number($(this).text());
+        renderFilters ()
+    });
+    
+    $('#manaColorDropdown li a').on('click', function(){
+        searchParameters.manaColor = $(this).text();
+        renderFilters ()
+    });
+    
+    $('#powerDropdown li a').on('click', function(){
+        searchParameters.power = Number($(this).text());
+        renderFilters ()
+    });
+    
+    $('#toughnessDropdown li a').on('click', function(){
+        searchParameters.toughness = Number($(this).text());
+        renderFilters ()
     });
 });
 
@@ -49,6 +74,8 @@ function filterCards_byName(data, searchName) {
     return tempData;
 }
 
+
+
 function findCardByName (name) {
     for(var i = 0; i < dataArray.length; i++) {
         if (dataArray[i].name == name) {
@@ -57,9 +84,26 @@ function findCardByName (name) {
     }
 }
 
+function renderFilters () {
+    $("#filtersPane").empty();
+    
+    if (searchParameters.manaCost != null) {
+        $("#filtersPane").append("<span class='tag label label-default'><span>" + searchParameters.manaCost + "</span><a style='cursor: pointer;'>x</a></span></span> ");
+    }
+    if (searchParameters.manaColor != null) {
+        $("#filtersPane").append("<span class='label label-default'>" + searchParameters.manaColor + "</span>");
+    }
+    if (searchParameters.power != null) {
+        $("#filtersPane").append("<span class='label label-default'>" + searchParameters.power + "</span>");
+    }
+    if (searchParameters.toughness != null) {
+        $("#filtersPane").append("<span class='label label-default'>" + searchParameters.toughness + "</span>");
+    }
+}
+
 function renderDataToPane(data) {
     for (var i = 0; i < data.length; i++) {
-        
+
         // Create list items for card
         var item = $('<div class="media cards">' +
             '<div class="media-left">' +
@@ -72,23 +116,50 @@ function renderDataToPane(data) {
             '<p>' + data[i].text + '</p>' +
             '</div>' +
             '</div>');
-        
+
         console.log(data[i].name);
-        
+
         $("#resultsPane").append(item);
     }
-    
-    $(".cards .cardName").click(function() {
+
+    $(".cards .cardName").click(function () {
         // Set up modal
-        var card = findCardByName ($(this).html())
+        var card = findCardByName($(this).html())
         console.log(card);
-        $("#cardTitle").html(card.name);
-        $("#cardText").html(card.text);
-        $("#cardType").html(card.type);
-        $("#cardRarity").html("Rarity: " + card.rarity);
-        $("#cardPower").html("Power: " + card.power);
-        $("#cardToughness").html("Thoughness: " + card.toughness);
-        $("#cardColors").html(card.colors);
+
+        $("#cardDetails").html(" ");
+        if (card) {
+            $(".modal-title").html(card.name)
+            $("#cardDetails").append("<p>" + card.text + "</p>")
+            
+            if (card.type != undefined) {
+                $("#cardDetails").append("<p><strong>Type: </strong>" + card.type + "</p>");
+            }
+            if (card.power != undefined) {
+                $("#cardDetails").append("<p><strong>Power: </strong>" + card.power + "</p>");
+            }
+            
+            if (card.toughness != undefined) { 
+                $("#cardDetails").append("<p><strong>Toughness: </strong>" + card.toughness + "</p>");
+            }
+                
+            var colorList = "<p><strong>Colors: </strong></p><ul>";
+            if (card.colors != undefined) {
+                for (var j = 0; j < card.colors.length; j++) {
+                    colorList += "<li>" + card.colors[j] + "</li>";
+                }
+
+                $("#cardDetails").append(colorList)
+            }
+        }
+
+        //        $("#cardTitle").html(card.name);
+        //        $("#cardText").html(card.text);
+        //        $("#cardType").html(card.type);
+        //        $("#cardRarity").html("Rarity: " + card.rarity);
+        //        $("#cardPower").html("Power: " + card.power);
+        //        $("#cardToughness").html("Thoughness: " + card.toughness);
+        //        $("#cardColors").html(card.colors);
         $("#cardModal").modal("show");
     });
 }
