@@ -86,6 +86,26 @@ margin-left: 320px;
     color: #00DCFF;
 }
 
+#image-dropdown {
+  display: inline-block;
+  border: 1px solid;
+}
+#image-dropdown {
+  height: 30px;
+  overflow: hidden;
+}
+/*#image-dropdown:hover {} */
+
+#image-dropdown .img_holder {
+  cursor: pointer;
+}
+#image-dropdown img.flagimgs {
+  height: 30px;
+}
+#image-dropdown span.iTEXT {
+  position: relative;
+  top: -8px;
+}
 #profilephoto {
     max-width: 45px;
     border-radius: 50px;
