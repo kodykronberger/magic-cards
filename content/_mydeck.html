@@ -1,2 +1,39 @@
-<script src="./js/deck.js"></script>
+<!--<script src="./js/deck.js"></script>-->
+<link rel="stylesheet" href="./css/deck.css">
 <div id="decks"></div>
+
+<div class="panel-group" id="decks" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#decks" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h4>Mono-Black </h4>
+                </a>
+                
+            </h4>
+            <h5>60 cards</h5>
+        </div>
+        <div class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body">
+                <!--        All cards go here-->
+                <ul class="list-group col-md-6">
+                    <li class="list-group-item">
+                        <img width="30px" src="./img/randomCard.jpg">
+                        <span class="badge">4 Quantity</span> 
+                        <span>Test Card</span> 
+                    </li>
+                    <li class="list-group-item">
+                        <img width="30px" src="./img/randomCard.jpg">
+                        <span class="badge">4 Quantity</span> 
+                        <span>Test Card 2</span> 
+                    </li>
+                    <li class="list-group-item">
+                        <img width="30px" src="./img/randomCard.jpg">
+                        <span class="badge">4 Quantity</span> 
+                        <span>Test Card 3</span> 
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

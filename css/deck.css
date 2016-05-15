@@ -1,0 +1,16 @@
+.single-card {
+    margin: 10px auto;
+    border: 2px solid white;
+    text-align: center;
+}
+
+.panel-title a h4, h4.panel-title {
+    font-family: 'Fredericka the Great', cursive;
+    display: inline;
+}
+
+.panel-heading h5 {
+    font-family: 'Fredericka the Great', cursive;
+    color: #899FA9;
+    display: inline;
+}
