@@ -14,3 +14,47 @@
     color: #899FA9;
     display: inline;
 }
+
+.color-image:first-of-type {
+    margin-left: 10px;
+}
+
+.list-title {
+    font-style: italic;
+    font-size: 1.1em;
+}
+
+.cardthumb {
+    margin-right: 10px;
+        display: inline-block;
+    float: left;
+}
+
+.manaicons {
+    list-style-type: none;
+    padding-left: 0;
+}
+.manaicons li {
+    display: inline-block;
+}
+
+.manaicons li span.badge {
+    background-color: gray;
+}
+
+.cardInfo {
+    display: inline-block;
+}
+
+.card-group {
+    min-height: 63px;
+}
+
+.card-group span.badge {
+    background-color: darkgreen;
+}
+
+.card-stats {
+    margin-left: 10px;
+    font-size: 0.8em;
+}
