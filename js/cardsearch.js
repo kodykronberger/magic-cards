@@ -17,8 +17,6 @@ $("document").ready(function () {
             for (var key in data) {
                 dataArray.push(data[key]);
             }
-            
-            console.log(dataArray);
         }
     });
 
@@ -101,14 +99,22 @@ function renderFilters () {
     }
 }
 
-function renderDataToPane(data) {
-    for (var i = 0; i < data.length; i++) {
+function renderDataToPane( data ) {
+    $.ajax({
+        url: "./data/imageurls.json",
+        success: function(imagedata){
+            populateCardList(data, imagedata)
+        }
+    });
+}
 
+function populateCardList( data, images ) {
+    for (var i = 0; i < data.length; i++) {
         // Create list items for card
         var item = $('<div class="media cards">' +
             '<div class="media-left">' +
             '<a href="#">' +
-            '<img class="card-image" src="./img/randomCard.jpg" />' +
+            '<img class="card-image" src="' + images[data[i].name] + '" />' +
             '</a>' +
             '</div>' +
             '<div class="media-body">' +
@@ -116,8 +122,6 @@ function renderDataToPane(data) {
             '<p>' + data[i].text + '</p>' +
             '</div>' +
             '</div>');
-
-        console.log(data[i].name);
 
         $("#resultsPane").append(item);
     }
@@ -130,6 +134,7 @@ function renderDataToPane(data) {
         $("#cardDetails").html(" ");
         if (card) {
             $(".modal-title").html(card.name)
+            $(".card-imageModal").attr("src", images[card.name]);
             $("#cardDetails").append("<p>" + card.text + "</p>")
             
             if (card.type != undefined) {
