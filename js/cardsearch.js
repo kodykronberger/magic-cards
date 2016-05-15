@@ -47,6 +47,8 @@ $("document").ready(function () {
         searchParameters.toughness = Number($(this).text());
         renderFilters ()
     });
+    
+    
 });
 
 

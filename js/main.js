@@ -87,7 +87,7 @@ function changeLoginNav(loggedIn) {
 // **************************
 
 function login() {
-    localStorage.setItem("username", "test user")
+    localStorage.setItem("username", "kodykronberger")
 }
 
 function logout() {
@@ -95,6 +95,6 @@ function logout() {
 }
 
 function register() {
-    currentuser = localStorage.setItem("username", "kodyk");
+    currentuser = localStorage.setItem("username", "kodykronberger");
     alert();
 }
