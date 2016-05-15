@@ -69,6 +69,14 @@ function populateDecks (data) {
         // For each card...
         for(var i = 0; i < data[deckName].length; i++) {
             var card = findCardByName(data[deckName][i].cardName);
+            
+            if (card.type.toLowerCase().includes("creature")) {
+                numberOfCreatures++;
+            } else if (card.type.toLowerCase().includes("land")) {
+                numberOfLands++
+            } else if (card.type.toLowerCase().includes("instant") || card.type.toLowerCase().includes("spell")) {
+                numberOfInstants++;
+            }
 
             html += ' <li class="list-group-item card-group">'+
                        ' <img class="cardthumb" width="30px" src="'+allImages[card.name]+'">'+
@@ -128,33 +136,30 @@ function populateDecks (data) {
 
             html += '</ul>' +
                 '<ul class="list-group col-md-6">'+
-               ' <li class="list-group-item"><span class="list-title">Total Power: </span>'+totalPower+'</li>'+
-               ' <li class="list-group-item"><span class="list-title">Total Toughness: </span>'+totalToughness+'</li>'+
-                '<li class="list-group-item"><span class="list-title">Creatures: </span>'+numberOfCreatures+'</li>'+
-               ' <li class="list-group-item"><span class="list-title">Lands: </span>'+numberOfLands+'</li>'+
-               ' <li class="list-group-item"><span class="list-title">Instants or Spells: </span>'+numberOfInstants+'</li>'+
-               ' <li class="list-group-item">'+
+               ' <li class="list-group-item"><p class="list-title">Total Power: <span class="value">'+totalPower+'</span></p>' +
+               ' <p class="list-title">Total Toughness: <span class="value">'+totalToughness+'</span></p>' +
+               ' <p class="list-title">Creatures: <span class="value">'+numberOfCreatures+'</span></p>' +
+               ' <p class="list-title">Lands: <span class="value">'+numberOfLands+'</span></p>' +
+               ' <p class="list-title">Instants/Spells: <span class="value">'+numberOfInstants+'</span></p>' +
                    ' <em>Colors: </em>';
 
             if(mainColors.black > 0) {
-                html += ' <img class="color-image" width="20px" src="./img/blackMana.png">';
+                html += ' <img class="color-image" width="30px" src="./img/blackMana.png">';
             }
             if(mainColors.blue > 0) {
-                html += ' <img class="color-image" width="20px" src="./img/blueMana.png">';
+                html += ' <img class="color-image" width="30px" src="./img/blueMana.png">';
             }
             if(mainColors.green > 0) {
-                html += ' <img class="color-image" width="20px" src="./img/greenMana.png">';
+                html += ' <img class="color-image" width="30px" src="./img/greenMana.png">';
             }
             if(mainColors.red > 0) {
-                html += ' <img class="color-image" width="20px" src="./img/redMana.png">';
+                html += ' <img class="color-image" width="30px" src="./img/redMana.png">';
             }
             if(mainColors.white > 0) {
-                html += ' <img class="color-image" width="20px" src="./img/whiteMana.png">';
+                html += ' <img class="color-image" width="30px" src="./img/whiteMana.png">';
             }
-        
-        
-              html += ' </li>'+
-                '</ul>'+
+
+            html += '</li></ul>'+
            ' </div>'+
         '</div>'+
     '</div>';
