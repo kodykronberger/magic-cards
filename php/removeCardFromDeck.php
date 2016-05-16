@@ -8,7 +8,7 @@
 
 $deckname = $_POST["deckName"];
 $cardname = $_POST["cardName"];
-$quantity = $_POST["quantity"];
+
 $ownsDeck = false;
 $deckId = 0;
 
@@ -41,13 +41,13 @@ while ($row = $result->fetch_assoc()) {
 } 
 
 if ($ownsDeck == true) {
-    $stmt = $conn->prepare("INSERT INTO deckcards (deckId, cardName, quantity) VALUES ( ? , ? , ? )"); 
-    $stmt->bind_param('isi', $deckId, $cardname, $quantity);
+    $stmt = $conn->prepare("DELETE FROM deckcards WHERE deckId = ? AND cardName = ?"); 
+    $stmt->bind_param('is', $deckId, $cardname);
     $stmt->execute();
 
     $result = $stmt->get_result();
 } else {
-    die("User cannot add this card, does not own deck.");
+    die("User cannot remove this card, does not own deck.");
 }
 
 // Close connection 

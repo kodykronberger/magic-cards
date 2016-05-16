@@ -53,7 +53,7 @@ $("document").ready(function () {
     
     $("#addToDeckButton").click(function(){
         $(".card-dialog").hide();
-        $(".confirm-dialog").show();
+        $(".confirm-dialog").fadeIn();
     });
     $("#okButton").click(function(){
         var isValidDeck = true;
@@ -76,12 +76,12 @@ $("document").ready(function () {
             "success": function(result) {
                 $("#cardModal").modal("hide");
                 // Display alert message
-                var message = "You have just added " + currentCard.name + " to " + $("input[name='deck']:checked").val();
+                var message = "You have just added " + currentCard.name + " to " + $("input[name='deck']:checked").val() + "!";
                 toastr.info(message);
             }
         });
     });
-    $("#cancelButton").click(function(){
+    $("#cancelButton, #cancelRemoveButton").click(function(){
         $("#cardModal").modal("hide");
     });
 });

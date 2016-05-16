@@ -83,6 +83,7 @@ function populateDecks (data) {
             html += ' <li class="list-group-item card-group">'+
                        ' <img class="cardthumb" width="30px" src="'+allImages[card.name]+'">'+
                         '<span class="badge">'+data[deckName][i].quantity+'x</span>' +
+                        '<button data-deck="'+deckName+'" data-card="'+card.name+'" class="btn btn-error btn-sm discard">Discard</button>' +
                         '<div class="cardInfo">' +
                         '<span class="cardname">'+data[deckName][i].cardName+'</span>'+
                         '<ul class="manaicons">';
@@ -170,6 +171,30 @@ function populateDecks (data) {
 
     $("#numberOfDecks").html(numberOfDecks);
     $("#decks").empty().html(html);
+    
+    // Set up discard buttons
+    $(".discard").click(function(){
+        $(this).removeClass("btn-error");
+        $(this).addClass("btn-warning");
+        $(this).html("Are you sure?");
+        
+        $(this).click(function(){
+            var cardName = $(this).attr("data-card");
+            var deckName = $(this).attr("data-deck");
+
+            $.post({
+                url: "./php/removeCardFromDeck.php",
+                data: {
+                    "cardName": cardName,
+                    "deckName": deckName,
+                    "username": currentuser
+                },
+                success: function(result){
+                    location.reload();
+                }
+            });
+        });
+    });
 }
 
 function getAllCards (successFunction) {

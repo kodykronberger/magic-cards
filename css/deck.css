@@ -58,3 +58,8 @@ span.value {
 .cardInfo span.cardname {
     margin-right: 10px;
 }
+
+.discard {
+    float: right;
+    margin: 0px 15px;
+}
