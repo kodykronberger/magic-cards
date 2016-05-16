@@ -56,7 +56,7 @@ function loadPageAjax(nameOfPage, jumboTitle) {
 function changeContent(data) {
     $("#content").hide();
     $("#content").html(data);
-    $("#content").fadeIn();
+    $("#content").show();
 }
 
 // Sets the correct navbar link to active

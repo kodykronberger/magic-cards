@@ -44,10 +44,6 @@
     min-height: 63px;
 }
 
-.card-group span.badge {
-    background-color: darkgreen;
-}
-
 .card-stats {
     margin-left: 10px;
     font-size: 0.8em;
@@ -57,4 +53,8 @@ span.value {
     font-family: 'Fredericka the Great', cursive;
     color: white;
     font-size: 1.5em;
+}
+
+.cardInfo span.cardname {
+    margin-right: 10px;
 }

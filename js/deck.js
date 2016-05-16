@@ -57,7 +57,7 @@ function populateDecks (data) {
         '<div class="panel-heading" role="tab" id="headingFor'+deckName.replace(" ", "")+'">'+
             '<h4 class="panel-title">'+
                 '<a role="button" data-toggle="collapse" data-parent="#decks" href="#collapseFor'+deckName.replace(" ", "")+'" aria-expanded="false" aria-controls="collapseFor'+deckName.replace(" ", "")+'">'+
-                    '<h4>Mono-Black</h4>'+
+                    '<h4>'+deckName+'</h4>'+
                 '</a>'+
                 
             '</h4>'+
@@ -73,18 +73,18 @@ function populateDecks (data) {
             var card = findCardByName(data[deckName][i].cardName);
             
             if (card.type.toLowerCase().includes("creature")) {
-                numberOfCreatures++;
+                numberOfCreatures += data[deckName][i].quantity;
             } else if (card.type.toLowerCase().includes("land")) {
-                numberOfLands++
+                numberOfLands += data[deckName][i].quantity;
             } else if (card.type.toLowerCase().includes("sorcery") || card.type.toLowerCase().includes("spell")) {
-                numberOfInstants++;
+                numberOfInstants += data[deckName][i].quantity;
             }
 
             html += ' <li class="list-group-item card-group">'+
                        ' <img class="cardthumb" width="30px" src="'+allImages[card.name]+'">'+
                         '<span class="badge">'+data[deckName][i].quantity+'x</span>' +
                         '<div class="cardInfo">' +
-                        '<span>'+data[deckName][i].cardName+'</span>'+
+                        '<span class="cardname">'+data[deckName][i].cardName+'</span>'+
                         '<ul class="manaicons">';
             
             var manaCost = card.manaCost;
@@ -139,7 +139,7 @@ function populateDecks (data) {
         }
 
             html += '</ul>' +
-                '<ul class="list-group col-md-6">'+
+                '<ul class="list-group col-md-3">'+
                ' <li class="list-group-item"><p class="list-title">Total Power: <span class="value">'+totalPower+'</span></p>' +
                ' <p class="list-title">Total Toughness: <span class="value">'+totalToughness+'</span></p>' +
                ' <p class="list-title">Creatures: <span class="value">'+numberOfCreatures+'</span></p>' +
@@ -164,14 +164,16 @@ function populateDecks (data) {
             }
 
             html += '</li></ul>'+
+                '<div class="col-md-3" id="cardChart"></div>' +
            ' </div>'+
         '</div>'+
     '</div>';
     }
-    
-    
+
     $("#numberOfDecks").html(numberOfDecks);
     $("#decks").empty().html(html);
+    
+    drawChart(3, 6, 9);
 }
 
 function getAllCards (successFunction) {

@@ -6,7 +6,7 @@ body {
 
 html,
 body {
-    height: 100%;
+    height: 96%;
 }
 
 a.navbar-brand img {
@@ -34,9 +34,9 @@ a.navbar-brand span {
 #wrapper {
     width: 1350px;
     margin: 0 auto;
-    padding: 50px 100px;
+    padding: 10px 100px;
     background-color: #222;
-    height: 100%;
+        min-height: 75%;
     /* Box shadows */
     -webkit-box-shadow: 10px 10px 47px -15px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 47px -15px rgba(0, 0, 0, 0.75);
@@ -59,7 +59,7 @@ a.navbar-brand span {
     text-align: center;
 }
 
-#cardButton{
+#cardButton {
     clear: left;
 }
 
@@ -80,25 +80,31 @@ a.navbar-brand span {
 }
 
 #image-dropdown {
-  display: inline-block;
-  border: 1px solid;
+    display: inline-block;
+    border: 1px solid;
 }
+
 #image-dropdown {
-  height: 30px;
-  overflow: hidden;
+    height: 30px;
+    overflow: hidden;
 }
+
+
 /*#image-dropdown:hover {} */
 
 #image-dropdown .img_holder {
-  cursor: pointer;
+    cursor: pointer;
 }
+
 #image-dropdown img.flagimgs {
-  height: 30px;
+    height: 30px;
 }
+
 #image-dropdown span.iTEXT {
-  position: relative;
-  top: -8px;
+    position: relative;
+    top: -8px;
 }
+
 #profilephoto {
     max-width: 45px;
     border-radius: 50px;
@@ -107,4 +113,8 @@ a.navbar-brand span {
 #username {
     font-size: 1.3em;
     color: #39C2D8;
+}
+
+.search-bar {
+    height: 48px;
 }

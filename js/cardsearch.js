@@ -133,11 +133,11 @@ function renderManaImagesInString(str) {
             .replace(/\{U\}/g, '<img class="color-image" width="20px" src="./img/blueMana.png">')
             .replace(/\{G\}/g, '<img class="color-image" width="20px" src="./img/greenMana.png">')
             .replace(/\{T\}/g, '<img class="color-image" width="20px" src="./img/tap.png">')
-            .replace(/\{1\}/g, '<span class="badge badge-success">1</span>')
-            .replace(/\{2\}/g, '<span class="badge badge-success">2</span>')
-            .replace(/\{3\}/g, '<span class="badge badge-success">3</span>')
-            .replace(/\{4\}/g, '><span class="badge badge-success">4</span>')
-            .replace(/\{5\}/g, '<span class="badge badge-success">5</span>')
+            .replace(/\{1\}/g, '<span class="badge badge-number">1</span>')
+            .replace(/\{2\}/g, '<span class="badge badge-number">2</span>')
+            .replace(/\{3\}/g, '<span class="badge badge-number">3</span>')
+            .replace(/\{4\}/g, '><span class="badge badge-number">4</span>')
+            .replace(/\{5\}/g, '<span class="badge badge-number">5</span>')
     );
 }
 
@@ -219,38 +219,7 @@ function populateCardList( data, images ) {
                 
             var manaCost = card.manaCost;
             if (manaCost) {
-                var manas = manaCost.replace(/}/g, "").replace(/{/g, "").split("");
-                for(var index in manas) {
-                    if(!isNaN(manas[index])){
-                        colorHTML += '<li><span class="badge badge-number">'+manas[index]+'</span></li>'
-                    } else {
-                        colorHTML += '<li><img width="23px" src="./img/';
-                        switch(manas[index].toLowerCase()) {
-                            case "r":
-                                colorHTML += "redMana.png";
-                                break;
-                            case "w":
-                                colorHTML += "whiteMana.png";
-                                break;
-                            case "u":
-                                colorHTML += "blueMana.png";
-                                break;
-                            case "g":
-                                colorHTML += "greenMana.png";
-                                break;
-                            case "b":
-                                colorHTML += "blackMana.png";
-                                break;
-                            case "x":
-                                colorHTML += "X.png";
-                                break;
-                            default:
-                                break;
-                        }
-                        colorHTML += '"></li>'
-                    }
-                }
-                colorHTML += '</ul>'
+                colorHTML += renderManaImagesInString(card.manaCost)
                 $("#cardDetails").append("<p style='display: inline-block; margin-right: 10px;'><strong>Mana Cost: </strong></p>" + colorHTML);
             }
         }

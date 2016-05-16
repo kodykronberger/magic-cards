@@ -7,7 +7,7 @@
 }
 
 #resultsPane {
-    max-height: 500px;
+    max-height: 400px;
     overflow: auto;
 }
 
@@ -42,7 +42,7 @@
     margin-right: 5px;
 }
 
-.manaicons li span.badge-number {
+span.badge-number {
     background-color: gray;
 }
 
