@@ -55,8 +55,8 @@ a.navbar-brand span {
     font-family: 'Fredericka the Great', cursive;
     font-size: 100px !important;
     margin-top: -2px !important;
-    color: #39C2D8 !important;
-    margin-left: 380px;
+    color: #3EE4FF !important;
+    text-align: center;
 }
 
 #cardButton{

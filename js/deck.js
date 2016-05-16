@@ -34,7 +34,9 @@ function findCardByName (name) {
 
 function populateDecks (data) {
     var html = "";
+    var numberOfDecks = 0;
     for (var deckName in data) {
+        numberOfDecks++
         var cardsLength = 0;
         var totalPower = 0;
         var totalToughness = 0;
@@ -52,9 +54,9 @@ function populateDecks (data) {
             cardsLength += data[deckName][i].quantity;
         }
         html += '<div class="panel panel-default">' +
-        '<div class="panel-heading" role="tab" id="headingFor'+deckName+'">'+
+        '<div class="panel-heading" role="tab" id="headingFor'+deckName.replace(" ", "")+'">'+
             '<h4 class="panel-title">'+
-                '<a role="button" data-toggle="collapse" data-parent="#decks" href="#collapseFor'+deckName+'" aria-expanded="false" aria-controls="collapseFor'+deckName+'">'+
+                '<a role="button" data-toggle="collapse" data-parent="#decks" href="#collapseFor'+deckName.replace(" ", "")+'" aria-expanded="false" aria-controls="collapseFor'+deckName.replace(" ", "")+'">'+
                     '<h4>Mono-Black</h4>'+
                 '</a>'+
                 
@@ -62,7 +64,7 @@ function populateDecks (data) {
             '<h5> | '+cardsLength+' cards</h5>'+
         '</div>'+
         '<p></p>'+
-        '<div class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFor'+deckName+'" id="collapseFor'+deckName+'">'+
+        '<div class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFor'+deckName.replace(" ", "")+'" id="collapseFor'+deckName.replace(" ", "")+'">'+
            ' <div class="panel-body">' + 
                 '<ul class="list-group col-md-6">';
         
@@ -74,7 +76,7 @@ function populateDecks (data) {
                 numberOfCreatures++;
             } else if (card.type.toLowerCase().includes("land")) {
                 numberOfLands++
-            } else if (card.type.toLowerCase().includes("instant") || card.type.toLowerCase().includes("spell")) {
+            } else if (card.type.toLowerCase().includes("sorcery") || card.type.toLowerCase().includes("spell")) {
                 numberOfInstants++;
             }
 
@@ -116,8 +118,10 @@ function populateDecks (data) {
                                     html += "blackMana.png";
                                     mainColors.black++;
                                     break;
+                                case "x":
+                                    colorHTML += "X.png";
+                                    break;
                                 default:
-                                    alert();
                                     break;
                             }
                         html += '"</li>'
@@ -166,7 +170,7 @@ function populateDecks (data) {
     }
     
     
-    
+    $("#numberOfDecks").html(numberOfDecks);
     $("#decks").empty().html(html);
 }
 
