@@ -1,5 +1,6 @@
 var dataArray = [];
 var myOwnedCards = null;
+var currentCard = null;
 var searchParameters = {
     "name": null,
     "manaColor": null,
@@ -7,6 +8,7 @@ var searchParameters = {
     "power": null,
     "toughness": null
 }
+
 
 $("document").ready(function () {
     var _url = "./data/AllCards.json";
@@ -49,7 +51,39 @@ $("document").ready(function () {
         renderFilters ()
     });
     
-    
+    $("#addToDeckButton").click(function(){
+        $(".card-dialog").hide();
+        $(".confirm-dialog").show();
+    });
+    $("#okButton").click(function(){
+        var isValidDeck = true;
+        if (!$("input[name='deck']:checked").val()) {
+           isValidDeck = false;
+        }
+
+        if (!isValidDeck) {
+            return toastr.warning("Please select a deck.");
+        }
+
+        $.post({
+            "url": "./php/addCardToDeck.php",
+            "data": {
+                "deckName": $("input[name='deck']:checked").val(),
+                "cardName": currentCard.name,
+                "quantity": $("#cardQuantity").val(),
+                "username": localStorage.getItem("username")
+            },
+            "success": function(result) {
+                $("#cardModal").modal("hide");
+                // Display alert message
+                var message = "You have just added " + currentCard.name + " to " + $("input[name='deck']:checked").val();
+                toastr.info(message);
+            }
+        });
+    });
+    $("#cancelButton").click(function(){
+        $("#cardModal").modal("hide");
+    });
 });
 
 
@@ -148,7 +182,7 @@ function insertStr(str, index, value) {
 function populateCardList( data, images ) {
     // If cards exceeds limit, do not show..
     if (data.length > 200) {
-        return alert("Please narrow down your search critera.");
+        return toastr.warning("Too many records! Please narrow your search criteria.");
     }
     
     for (var i = 0; i < data.length; i++) {
@@ -160,8 +194,7 @@ function populateCardList( data, images ) {
         for(var deck in myOwnedCards) {
             for (var card in myOwnedCards[deck]) {
                 if (myOwnedCards[deck][card].cardName == data[i].name) {
-                    isOwned = '<span class="badge badge-found">Found in <em>'+deck+'</em></span>';
-                    break;
+                    isOwned += '<span class="badge badge-found">Found in <em>'+deck+'</em></span>';
                 }
             }
         } 
@@ -197,9 +230,14 @@ function populateCardList( data, images ) {
     $(".cards .cardName").click(function () {
         // Set up modal
         var card = findCardByName($(this).attr("data-cardname"))
+        console.log(card.name);
+        // Set up correct modal
+        $(".card-dialog").show();
+        $(".confirm-dialog").hide();
 
         $("#cardDetails").html(" ");
         if (card) {
+            currentCard = card;
             $(".modal-title").html(card.name)
             $(".card-imageModal").attr("src", images[card.name]);
             $("#cardDetails").append("<p>" + renderManaImagesInString(card.text) + "</p>")
@@ -224,13 +262,15 @@ function populateCardList( data, images ) {
             }
         }
 
-        //        $("#cardTitle").html(card.name);
-        //        $("#cardText").html(card.text);
-        //        $("#cardType").html(card.type);
-        //        $("#cardRarity").html("Rarity: " + card.rarity);
-        //        $("#cardPower").html("Power: " + card.power);
-        //        $("#cardToughness").html("Thoughness: " + card.toughness);
-        //        $("#cardColors").html(card.colors);
+        $("#addToDeckButton").html("Add " + card.name + " to Deck");
+        $("#deckRadios").empty();
+        for(var deck in myOwnedCards) {
+            var numberOfCards = 0;
+            for (var card in myOwnedCards[deck]) {
+                numberOfCards += myOwnedCards[deck][card].quantity;
+            }
+            $("#deckRadios").append("<input type='radio' class='form-group' name='deck' value='"+deck+"'>"+deck+" ("+numberOfCards+" cards)</option><br>");
+        }
         $("#cardModal").modal("show");
     });
 }

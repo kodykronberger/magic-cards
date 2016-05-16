@@ -49,3 +49,11 @@ span.badge-number {
 span.badge-found {
     background-color: #004C63;
 }
+
+#deckRadios input {
+    margin-right: 10px;
+}
+
+#deckRadios {
+    font-size: 1.2em;
+}

@@ -10,7 +10,6 @@ $("document").ready(function(){
             url: "./php/myDeck.php",
             data: { "username": currentuser },
             "success": function(result){
-                console.log(result);
                 getAllCards(function(data){
                     for (var key in data) {
                         allCards.push(data[key]);
@@ -91,10 +90,8 @@ function populateDecks (data) {
             var manaCost = card.manaCost;
             if (manaCost) {
                 var manas = manaCost.replace(/}/g, "").replace(/{/g, "").split("");
-                console.log(manas);
                 for(var index in manas) {
                     if(!isNaN(manas[index])){
-                        console.log(manas[index]);
                         html += '<li><span class="badge badge-success">'+manas[index]+'</span></li>'
                     } else {
                         html += '<li><img width="20px" src="./img/';
