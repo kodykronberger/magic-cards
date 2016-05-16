@@ -263,6 +263,10 @@ function populateCardList( data, images ) {
         }
 
         $("#addToDeckButton").html("Add " + card.name + " to Deck");
+        if (!localStorage.getItem("username")) {
+            $("#addToDeckButton").hide();
+        }
+        
         $("#deckRadios").empty();
         for(var deck in myOwnedCards) {
             var numberOfCards = 0;
