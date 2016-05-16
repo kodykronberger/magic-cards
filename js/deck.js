@@ -10,6 +10,7 @@ $("document").ready(function(){
             url: "./php/myDeck.php",
             data: { "username": currentuser },
             "success": function(result){
+                console.log(result);
                 getAllCards(function(data){
                     for (var key in data) {
                         allCards.push(data[key]);
@@ -172,8 +173,6 @@ function populateDecks (data) {
 
     $("#numberOfDecks").html(numberOfDecks);
     $("#decks").empty().html(html);
-    
-    drawChart(3, 6, 9);
 }
 
 function getAllCards (successFunction) {

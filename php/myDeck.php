@@ -32,7 +32,7 @@ if ($row = $result->fetch_assoc()) {
 } 
 
 // Get all deck cards that correspond to your user Id
-$stmt = $conn->prepare("SELECT d.id, d.name, dc.cardName, dc.quantity FROM deck d INNER JOIN deckcards dc ON d.id = dc.deckId WHERE userId = ?"); 
+$stmt = $conn->prepare("SELECT d.id, d.name, dc.cardName, dc.quantity FROM deck d LEFT JOIN deckcards dc ON d.id = dc.deckId WHERE userId = ?"); 
 $stmt->bind_param('s', $userid);
 $stmt->execute();
 
@@ -46,7 +46,9 @@ while ($row = $result->fetch_assoc()) {
     if (!array_key_exists($deckname, $return)) {
         $return[$deckname] = array();
     }
-    array_push($return[$deckname], array("cardName"=>$cardName, "quantity"=>$quantity));
+    if ($cardName != null && $quantity != null) {
+        array_push($return[$deckname], array("cardName"=>$cardName, "quantity"=>$quantity));
+    }
 }
 
 // Close connection 
