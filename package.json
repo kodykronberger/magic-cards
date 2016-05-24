@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/kodykronberger/magic-cards/issues"
   },
-  "homepage": "https://github.com/kodykronberger/magic-cards#readme"
+  "homepage": "https://github.com/kodykronberger/magic-cards#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
