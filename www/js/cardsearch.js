@@ -2,7 +2,6 @@ var dataArray = [];
 var myOwnedCards = null;
 var currentCard = null;
 var searchParameters = {
-    "name": null,
     "manaColor": null,
     "manaCost": null,
     "power": null,
@@ -11,18 +10,6 @@ var searchParameters = {
 
 
 $("document").ready(function () {
-    var _url = "./data/AllCards.json";
-
-    $.ajax({
-        "url": _url,
-        "dataType": "json",
-        "success": function (data) {
-            for (var key in data) {
-                dataArray.push(data[key]);
-            }
-        }
-    });
-
     // Set up filter variables
     $("cardModal").modal();
     $("#search").click(function () {
@@ -92,24 +79,41 @@ function filterCards(searchName) {
 
     var tempData = [];
 
-    tempData = filterCards_byName(dataArray, searchName);
-
-    renderDataToPane(tempData);
-}
-
-function filterCards_byName(data, searchName) {
-    var tempData = [];
-
-    for (var i = 0; i < data.length; i++) {
-        if (data[i].name.toLowerCase().includes(searchName.toLowerCase())) {
-            tempData.push(data[i]);
-        }
+    // Url to card API
+    var url = "/getCards?";
+    
+    // Add search queries
+    if (searchParameters.manaColor) {
+        url += "manaColor=" + searchParameters.manaColor + "&";
     }
-
-    return tempData;
+    if (searchParameters.manaCost) {
+        url += "manaCost=" + searchParameters.manaCost + "&";
+    }
+    if (searchName) {
+        url += "name=" + searchName + "&";
+    }
+    if (searchParameters.power) {
+        url += "power=" + searchParameters.power + "&";
+    }
+    if (searchParameters.toughness) {
+        url += "toughness=" + searchParameters.toughness + "&";
+    }
+    
+    // Take off last ampersand symbol.
+    url = url.slice(0, -1);
+    console.log(url);
+    $.get({
+        url: url,
+        dataType: "json",
+        success: function( data ) {
+            dataArray = data;
+            populateCardList(data);
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
 }
-
-
 
 function findCardByName (name) {
     for(var i = 0; i < dataArray.length; i++) {
@@ -136,25 +140,6 @@ function renderFilters () {
     }
 }
 
-function renderDataToPane( data ) {
-    $.ajax({
-        url: "./data/imageurls.json",
-        success: function(imagedata){
-            $.post({
-                url: "./php/myDeck.php",
-                data: { "username": currentuser },
-                "success": function(result){
-                    for (var deckName in result) {
-                        myOwnedCards = JSON.parse(result);
-                    }
-                    populateCardList(data, imagedata)
-                }
-            });
-            
-        }
-    });
-}
-
 function renderManaImagesInString(str) {
     if (str == null) {
         return "";
@@ -179,7 +164,7 @@ function insertStr(str, index, value) {
     return str.substr(0, index) + value + str.substr(index);
 }
 
-function populateCardList( data, images ) {
+function populateCardList( data ) {
     // If cards exceeds limit, do not show..
     if (data.length > 200) {
         return toastr.warning("Too many records! Please narrow your search criteria.");
@@ -209,7 +194,7 @@ function populateCardList( data, images ) {
         var html = '<div class="media cards">' +
             '<div class="media-left">' +
             '<a href="#">' +
-            '<img class="card-image" src="' + images[data[i].name] + '" />' +
+            '<img class="card-image" src="' + data[i].imageUrl + '" />' +
             '</a>' +
             '</div>' +
             '<div class="media-body">' +
@@ -239,7 +224,7 @@ function populateCardList( data, images ) {
         if (card) {
             currentCard = card;
             $(".modal-title").html(card.name)
-            $(".card-imageModal").attr("src", images[card.name]);
+            $(".card-imageModal").attr("src", card.imageUrl);
             $("#cardDetails").append("<p>" + renderManaImagesInString(card.text) + "</p>")
             
             if (card.type != undefined) {
