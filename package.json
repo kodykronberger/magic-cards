@@ -1,0 +1,20 @@
+{
+  "name": "magic-cards",
+  "version": "1.0.0",
+  "description": "A site to create decks & find cards in MTG.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kodykronberger/magic-cards.git"
+  },
+  "author": "Dakota Kronberger & Tanner Champine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kodykronberger/magic-cards/issues"
+  },
+  "homepage": "https://github.com/kodykronberger/magic-cards#readme"
+}
