@@ -10,8 +10,8 @@ var pageTitles = {
 
 // On doc ready
 $(document).ready(function () {
-    // Redirect to home page;
-    loadPageAjax(currentPage, pageTitles[currentPage]);
+    // Redirect to current page;
+    loadPageAjax(currentPage, pageTitles[currentPage], (pageTitles[currentPage] == "My Decks") ? true : false);
     // Handle whether used is logged in
     if (currentuser == null) {
         changeLoginNav(false);
@@ -31,6 +31,15 @@ $(document).ready(function () {
         }, 500);
         $(".userdetails").removeClass("active");
     });
+    
+    // Create loading dots
+    t = setInterval(function () {
+        if ($("#dots").html().length > 3) {
+            $("#dots").html("&middot;");
+        } else {
+            $("#dots").html($("#dots").html() + "&middot;");
+        }
+    }, 250);
 
 }); // End of on doc ready
 
@@ -39,8 +48,9 @@ $(document).ready(function () {
 // **************************
 
 // Loads a file from content/ using AJAX
-function loadPageAjax(nameOfPage, jumboTitle) {
+function loadPageAjax(nameOfPage, jumboTitle, triggerModal) {
     var _url = "./content/" + nameOfPage + ".html";
+    if (triggerModal) { $("#loadingModal").modal("show") }
     $.ajax({
         url: _url,
         success: function (data) {
@@ -94,7 +104,19 @@ function logout() {
     localStorage.removeItem("username")
 }
 
-function register() {
+function register(userName, fname, lname, email, country) {
     currentuser = localStorage.setItem("username", "kodykronberger");
-    alert();
+    $.post({
+        url: "./registerUser",
+        data: { 
+            userName: "kodykronberger",
+            fname: "Dakota",
+            lname: "Kronberger",
+            email: "kodykronberger@yahoo.com",
+            country: "USA"
+        },
+        success: function () {
+            alert("Success!");
+        }
+    });
 }

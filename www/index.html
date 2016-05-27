@@ -25,6 +25,22 @@
 </head>
 
 <body>
+    <!-- For loading elements on webpage.. -->
+    <div id="loadingModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog loading-popup">
+            <div class="modal-content">
+                <div class="modal-heading">
+                    <h4>&nbsp;&nbsp;Loading..</h4>
+                </div>
+                <div class="modal-body">
+                    <h1 id="dots"></h1>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -39,13 +55,13 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li data-tab="_home"><a style="cursor: pointer;" onclick="loadPageAjax('_home', 'Home')">Home</a>
+                    <li data-tab="_home"><a style="cursor: pointer;" onclick="loadPageAjax('_home', 'Home', true)">Home</a>
                     </li>
-                    <li data-tab="_cards"><a style="cursor: pointer;" onclick="loadPageAjax('_cards', 'Card Search')">Cards</a>
+                    <li data-tab="_cards"><a style="cursor: pointer;" onclick="loadPageAjax('_cards', 'Card Search', true)">Cards</a>
                     </li>
-                    <li data-tab="_users"><a style="cursor: pointer;" onclick="loadPageAjax('_users', 'Users')">Users</a>
+                    <li data-tab="_users"><a style="cursor: pointer;" onclick="loadPageAjax('_users', 'Users', true)">Users</a>
                     </li>
-                    <li data-tab="_mydecks"><a style="cursor: pointer;" onclick="loadPageAjax('_mydecks', 'My Deck')">My Decks</a>
+                    <li data-tab="_mydecks"><a style="cursor: pointer;" onclick="loadPageAjax('_mydecks', 'My Deck', true)">My Decks</a>
                     </li>
                 </ul>
                 <ul id="nav-loggedOut" class="nav navbar-nav navbar-right">
@@ -71,6 +87,8 @@
     <div id="wrapper">
         <div id="content"></div>
     </div>
+    
+    
 
     <footer class="footer">
         <div class="container footer-content">

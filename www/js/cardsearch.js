@@ -1,5 +1,6 @@
 var dataArray = [];
 var myOwnedCards = null;
+var myDecks = null;
 var currentCard = null;
 var searchParameters = {
     "manaColor": null,
@@ -53,12 +54,11 @@ $("document").ready(function () {
         }
 
         $.post({
-            "url": "./php/addCardToDeck.php",
+            "url": "./addCardToDeck",
             "data": {
                 "deckName": $("input[name='deck']:checked").val(),
                 "cardName": currentCard.name,
-                "quantity": $("#cardQuantity").val(),
-                "username": localStorage.getItem("username")
+                "userName": localStorage.getItem("username")
             },
             "success": function(result) {
                 $("#cardModal").modal("hide");
@@ -71,6 +71,16 @@ $("document").ready(function () {
     $("#cancelButton, #cancelRemoveButton").click(function(){
         $("#cardModal").modal("hide");
     });
+    
+    $.post({
+        url: "./getUserDecks",
+        data: { "userName": currentuser },
+        "success": function (result) {
+            myOwnedCards = result;
+        }
+    });
+    
+    $("#loadingModal").modal("hide")
 });
 
 
@@ -102,12 +112,14 @@ function filterCards(searchName) {
     // Take off last ampersand symbol.
     url = url.slice(0, -1);
     console.log(url);
+    $("#loadingModal").modal("show")
     $.get({
         url: url,
         dataType: "json",
         success: function( data ) {
             dataArray = data;
             populateCardList(data);
+            $("#loadingModal").modal("hide")
         },
         error: function(xhr, status, error) {
             console.error(error);
@@ -171,8 +183,6 @@ function populateCardList( data ) {
     }
     
     for (var i = 0; i < data.length; i++) {
-        
-        
         // Create list items for card
         var isOwned = "";
         
@@ -254,9 +264,10 @@ function populateCardList( data ) {
         
         $("#deckRadios").empty();
         for(var deck in myOwnedCards) {
+            console.log(deck);
             var numberOfCards = 0;
             for (var card in myOwnedCards[deck]) {
-                numberOfCards += myOwnedCards[deck][card].quantity;
+                numberOfCards += 1;
             }
             $("#deckRadios").append("<input type='radio' class='form-group' name='deck' value='"+deck+"'>"+deck+" ("+numberOfCards+" cards)</option><br>");
         }
